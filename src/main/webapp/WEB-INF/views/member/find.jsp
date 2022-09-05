@@ -255,7 +255,7 @@
 				},
 				success : function(data) {
 					if (data) {
-						alert('해당하는 비밀번호를 찾았습니다.');
+						alert('임시 비밀번호가 발급되었습니다.');
 						console.log(data);
 						$("#idFinder").show();
 						$("#pwFinder").show();

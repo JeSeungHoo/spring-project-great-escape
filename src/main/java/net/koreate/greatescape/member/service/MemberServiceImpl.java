@@ -100,8 +100,20 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
+	@Transactional
 	public MemberVO findId(MemberVO vo) {
-		return mdao.idFinder(vo);
+		MemberVO findedMember = mdao.idFinder(vo);
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < 10; i++) {
+			char c = (char) ( (int) (Math.random() * 58) + 65 );
+			sb.append(c);
+		}
+		String newPw = sb.toString();
+		String encodedPw = bCryptPasswordEncoder.encode(newPw);
+		findedMember.setMember_pw(encodedPw);
+		mdao.modify(findedMember);
+		findedMember.setMember_pw(newPw);
+		return findedMember;
 	}
 
 	@Override
