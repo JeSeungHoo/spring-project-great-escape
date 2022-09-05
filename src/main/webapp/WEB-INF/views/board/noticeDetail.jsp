@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../common/header.jsp" %>
 <section class="container">
 	<div class="row">
@@ -42,7 +43,7 @@
 					<div class="card-footer">
 						<p class="card-text">첨부파일</p>					
 						<c:forEach var="file" items="${files}">
-							<a class="d-block" href="${contextPath}/attach${file}">${file.substring(file.lastIndexOf("_") + 1)}</a>
+							<a class="d-block" download="" href="${contextPath}/attach${file}" >${fn:substringAfter(file, '_')}</a>
 						</c:forEach>
 					</div>
 				</c:if>

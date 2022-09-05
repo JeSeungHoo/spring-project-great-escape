@@ -173,7 +173,7 @@ public class BoardController {
 	@GetMapping("noticeDetail")
 	public String readNotice(MultipartFile[] files, int notice_num, Model model) throws Exception {
 		NoticeBoardVO vo = bs.readNotice(notice_num);
-		
+	
 		List<String> fileNameList = bs.getFileNameList(notice_num);
 		model.addAttribute("notice", vo);
 		model.addAttribute("files", fileNameList);
